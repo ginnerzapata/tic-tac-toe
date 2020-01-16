@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tic Tac Toe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="board">
-        <div class="row">
-            <div id="0" class="square"></div>
-            <div id="1" class="square"></div>
-            <div id="2" class="square"></div>
-        </div>
-        <div class="row">
-            <div id="3" class="square"></div>
-            <div id="4" class="square"></div>
-            <div id="5" class="square"></div>
-        </div>
-        <div class="row">
-            <div id="6" class="square"></div>
-            <div id="7" class="square"></div>
-            <div id="8" class="square"></div>
-        </div>
-        <button onclick="restart()">Restart</button>
+  <main class="wrap">
+    <div class="screen">
+      <p class="player">Player 1: 0</p>
+      <p class="player">Master TTT: 0</p>
     </div>
+    <div class="gameboard">
+      <div class="row">
+        <div id="0" class="cell"></div>
+        <div id="1" class="cell"></div>
+        <div id="2" class="cell"></div>
+      </div>
+      <div class="row">
+        <div id="3" class="cell"></div>
+        <div id="4" class="cell"></div>
+        <div id="5" class="cell"></div>
+      </div>
+      <div class="row">
+        <div id="6" class="cell"></div>
+        <div id="7" class="cell"></div>
+        <div id="9" class="cell"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button>Reset</button>
+      <button>Next round</button>
+    </div>
+  </main>
 </body>
+
 </html>
