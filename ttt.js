@@ -9,18 +9,18 @@ const Player = (name, mark) =>{
       moves.push(cell.id)
       gameBoard.allMoves.push(cell.id)
       console.log(moves)
-      newTurn()
+      nextTurn()
     };
   };
 
-  let newTurn = () => {
+  let nextTurn = () => {
     if(gameBoard.playing === player1)
       gameBoard.playing = player2
     else gameBoard.playing = player1
     console.log(gameBoard.playing )
   }
   
-  return {name,mark,moves,play, newTurn}
+  return {name,mark,moves,play, newTurn: nextTurn}
 }
 
 const player1 = Player('Ginner','X')
@@ -35,7 +35,7 @@ const displayController = (()=>{
 
 const gameBoard = (()=>{
   let allMoves = [];
-  let playing = player1;
+  let player = player1;
   const winningCombos = [
     [0,1,2],
     [3,4,5],
@@ -50,7 +50,7 @@ const gameBoard = (()=>{
   $resetbtn.onclick = () => reset()
   const $cells = document.querySelectorAll('.cell');
   $cells.forEach(cell => cell.addEventListener('click',() => {
-    playing.play(cell);
+    player.play(cell);
   }));
 
   const reset = () => {
@@ -61,7 +61,7 @@ const gameBoard = (()=>{
   }
   
 
-  return {cells: $cells, winningCombos, reset, playing,allMoves};
+  return {cells: $cells, winningCombos, reset, playing: player,allMoves};
 
   })();
 
