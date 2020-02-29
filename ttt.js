@@ -14,10 +14,10 @@ const Player = (name, mark) =>{
   };
 
   let nextTurn = () => {
-    if(gameBoard.playing === player1)
-      gameBoard.playing = player2
-    else gameBoard.playing = player1
-    console.log(gameBoard.playing )
+    if(gameBoard.player === player1)
+      gameBoard.player = player2
+    else gameBoard.player = player1
+    console.log(gameBoard.player )
   }
   
   return {name,mark,moves,play, newTurn: nextTurn}
@@ -61,7 +61,7 @@ const gameBoard = (()=>{
   }
   
 
-  return {cells: $cells, winningCombos, reset, playing: player,allMoves};
+  return {cells: $cells, winningCombos, reset, player: player,allMoves};
 
   })();
 
