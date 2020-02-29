@@ -1,7 +1,16 @@
 //players
 const Player = (name, mark) =>{
   let moves = [];
-  let play = cell => moves.push(cell.id);
+  let play = cell => {
+    if(moves.includes(cell.id))
+      return;
+    else {
+      cell.textContent = mark
+      moves.push(cell.id)
+      console.log(moves)
+    };
+  
+  };
   
   return {name,mark,moves,play}
 }
