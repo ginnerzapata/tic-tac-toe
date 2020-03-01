@@ -43,13 +43,12 @@ const gameBoard = (()=>{
   }
   
   let play = cell => {
-    if(allMoves.includes(cell.id))
+    if(allMoves.includes(+cell.id))
       return;
     else {
-      nextTurn().moves.push(cell.id)
+      nextTurn().moves.push(+cell.id)
       cell.textContent = player.mark
-      allMoves.push(cell.id)
-    };
+      allMoves.push(+cell.id)
   };
 
   let nextTurn = () => {
@@ -60,9 +59,12 @@ const gameBoard = (()=>{
       return player1
     }
   }
-  return {$cells, winningCombos, reset, player,allMoves,play,nextTurn};
 
-  })();
+  return {$cells, winningCombos, reset,
+    player,allMoves,play,nextTurn, checkWin};
+
+  }
+})(); 
 
 
 
