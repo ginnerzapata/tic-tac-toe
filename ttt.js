@@ -37,9 +37,6 @@ const gameBoard = (()=>{
   ];
   const $resetbtn = document.querySelector('.reset')
   $resetbtn.onclick = () => reset()
-
-  const $nextbtn = document.querySelector('.next')
-  $nextbtn.onclick = () => next()
   
   const $cells = document.querySelectorAll('.cell');
   $cells.forEach(cell => cell.addEventListener('click',() => {
@@ -70,8 +67,9 @@ const gameBoard = (()=>{
       if(checkWin()) {
         player.newWin()
         alert(`${player.name} won!`)
+        updateMarker();
+        next()
       }
-      updateMarker();
       nextTurn();
     
     }
