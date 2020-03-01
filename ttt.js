@@ -1,26 +1,7 @@
 //players
 const Player = (name, mark) =>{
   let moves = [];
-  let play = cell => {
-    if(gameBoard.allMoves.includes(cell.id))
-      return;
-    else {
-      cell.textContent = mark
-      moves.push(cell.id)
-      gameBoard.allMoves.push(cell.id)
-      console.log(moves)
-      nextTurn()
-    };
-  };
-
-  let nextTurn = () => {
-    if(gameBoard.player === player1)
-      gameBoard.player = player2
-    else gameBoard.player = player1
-    console.log(gameBoard.player )
-  }
-  
-  return {name,mark,moves,play, newTurn: nextTurn}
+  return {name,mark,moves}
 }
 
 const player1 = Player('Ginner','X')
@@ -34,8 +15,8 @@ const displayController = (()=>{
 
 
 const gameBoard = (()=>{
-  let allMoves = [];
-  let player = player1;
+  let allMoves = [];  
+  let player = player2;
   const winningCombos = [
     [0,1,2],
     [3,4,5],
@@ -48,9 +29,10 @@ const gameBoard = (()=>{
   ];
   const $resetbtn = document.querySelector('.reset')
   $resetbtn.onclick = () => reset()
+  
   const $cells = document.querySelectorAll('.cell');
   $cells.forEach(cell => cell.addEventListener('click',() => {
-    player.play(cell);
+    play(cell);
   }));
 
   const reset = () => {
@@ -60,8 +42,25 @@ const gameBoard = (()=>{
     allMoves.length = 0;
   }
   
+  let play = cell => {
+    if(allMoves.includes(cell.id))
+      return;
+    else {
+      nextTurn().moves.push(cell.id)
+      cell.textContent = player.mark
+      allMoves.push(cell.id)
+    };
+  };
 
-  return {cells: $cells, winningCombos, reset, player: player,allMoves};
+  let nextTurn = () => {
+    if(player === player1){
+      player = player2
+      return player2}
+    else {player = player1
+      return player1
+    }
+  }
+  return {$cells, winningCombos, reset, player,allMoves,play,nextTurn};
 
   })();
 
