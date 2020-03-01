@@ -50,6 +50,7 @@ const gameBoard = (()=>{
     allMoves.length = 0;
     player1.resetCounter()
     player2.resetCounter()
+    updateMarker()
   }
   const next = () => {
     $cells.forEach(cell => cell.textContent = '');
